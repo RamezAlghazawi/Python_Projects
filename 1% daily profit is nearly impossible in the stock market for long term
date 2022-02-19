@@ -1,28 +1,59 @@
-#program to calculate the Percentage of profits per day
+'''#program to calculate the persentage of profits per day
 
-def calculate(initial_investment, Percentage, days):
-    gross = initial_investment
+def cal(in_inv,per,days):
+    gross = in_inv
     for i in range(days):
-        gross = (gross * Percentage) + gross
+        gross = (gross * per) + gross
     return gross
-    
+
 def profit_percentage(p,i):
     sum = (p / i) * 100
     return sum
-    
-def check(gross):
-    if gross >= 170000000000:
-        return "Congrats you are the richest human on earth"
-    else:
-        return None
+
+
+initial_investment = 1500
+percentage_of_daily_profit = 0.02
+days = 740
+final_amount_after_days = cal(initial_investment,percentage_of_daily_profit,days)
+
+print(f"after {days} days, the final ampunt is {format(final_amount_after_days,'.2f')}")
+
+final_profit_persentage = profit_percentage(final_amount_after_days,initial_investment)
+print(f"the final profit persentage after {days}, is {format(final_profit_persentage, '.2f')}%")'''
+
+#program to calculate the Percentage of profits per day
+
+class T:
+    def __init__(self, initial_investment, daily_profit_percentage, years):
+        self.initial_investment = initial_investment
+        self.daily_profit_percentage = daily_profit_percentage
+        self.years = years
+        self.days = self.years * 360
+
+    def calculate(self):
+        gross = self.initial_investment
+        for i in range(self.days):
+            gross = (gross * self.daily_profit_percentage) + gross
+        if gross >= 170000000000:
+            print("congratulations you are the richest human on earth :)")
+            return gross
+        else:
+            return gross
+
+    def profit_percentage(self):
+        m = self.calculate()
+        sum = (m / self.initial_investment) * 100
+        return sum
+
+
 
 initial_investment = 1500
 daily_profit_percentage = 2
 years = 3
-days = years * 360
 
-final_amount_after_days = calculate(initial_investment, (daily_profit_percentage/100), days)
-print(f"after {years} years, ({days} days),  the final ampunt is {format(final_amount_after_days,'.2f')}")
-final_profit_persentage = profit_percentage(final_amount_after_days,initial_investment)
-print(f"the final profit persentage after {days}, is {format(final_profit_persentage, '.2f')}%")
-print(check(final_amount_after_days))
+ob = T(initial_investment, (daily_profit_percentage/100), years)
+final_amount_after_days = ob.calculate()
+print(f"after {years} years, ({years * 360} days),  the final ampunt is {format(final_amount_after_days,'.2f')}")
+final_profit_persentage = ob.profit_percentage()
+print(f"the final profit persentage after {years * 360}, is {format(final_profit_persentage, '.2f')}%")
+#print(check(final_amount_after_days))
