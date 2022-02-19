@@ -1,0 +1,28 @@
+#program to calculate the Percentage of profits per day
+
+def calculate(initial_investment, Percentage, days):
+    gross = initial_investment
+    for i in range(days):
+        gross = (gross * Percentage) + gross
+    return gross
+    
+def profit_percentage(p,i):
+    sum = (p / i) * 100
+    return sum
+    
+def check(gross):
+    if gross >= 170000000000:
+        return "Congrats you are the richest human on earth"
+    else:
+        return None
+
+initial_investment = 1500
+daily_profit_percentage = 2
+years = 3
+days = years * 360
+
+final_amount_after_days = calculate(initial_investment, (daily_profit_percentage/100), days)
+print(f"after {years} years, ({days} days),  the final ampunt is {format(final_amount_after_days,'.2f')}")
+final_profit_persentage = profit_percentage(final_amount_after_days,initial_investment)
+print(f"the final profit persentage after {days}, is {format(final_profit_persentage, '.2f')}%")
+print(check(final_amount_after_days))
